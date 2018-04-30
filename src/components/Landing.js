@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Landing = () => (
   <section className="landing">
     <h1 className="hero-title">Turn the music up!</h1>
@@ -21,4 +22,4 @@ const Landing = () => (
   </section>
 );
 
-export default Landing;
+export default Landing; 
