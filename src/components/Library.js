@@ -1,30 +1,33 @@
- import React, { Component } from 'react';
- import albumData from './../data/albums';
- import { Link } from 'react-router-dom';
- 
- class Library extends Component { 
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import albumData from './../data/albums';
+import {Bootstrap, Grid, Col, Row} from 'react-bootstrap';
+import './Library.css';
+
+class Library extends Component { 
    constructor(props) {
      super(props);
      this.state = { albums: albumData };
    }
-     
    render() {
     return ( 
-      <section className='library'>
+      <Grid className='library'>
+       <Row>
         {
           this.state.albums.map( (album, index) => 
+            <Col className="library-album text-left" sm={4}>
             <Link to={`/album/${album.slug}`} key={index}>
-             <img src={album.albumCover} alt={album.title} />
-               <div>{album.title}</div>
-               <div>{album.artist}</div>
-               <div>{album.songs.length} songs</div> 
+              <img className="library-album-pic" src={album.albumCover} alt={album.title} />
+              <div className="album-info-1"><span className="album-name">{album.title}</span> ({album.songs.length} songs)</div>
+              <div className="album-info-2">{album.artist}</div>
             </Link>
+            </Col>
           )
         }
-      </section>
+        </Row>
+      </Grid>
      );
    }
  }
-
 
 export default Library;
